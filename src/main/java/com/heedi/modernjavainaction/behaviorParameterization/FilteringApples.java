@@ -18,34 +18,37 @@ public class FilteringApples {
         List<Apple> greenApples = filterApples(inventory, new AppleGreenColorPredicate());
         List<Apple> heavyApples = filterApples(inventory, new AppleHeavyWeightPredicate());
 
-        prettyPrintApple(greenApples, new AppleColorPrintFunction());
-        prettyPrintApple(heavyApples, new AppleWeightPrintFunction());
+        prettyPrintApple(greenApples, new AppleWeightPrintFormatter());
+        prettyPrintApple(inventory, new ApplePrintFormatter());
     }
 
-    public static void prettyPrintApple(List<Apple> inventory, PrintFunction printFunction) {
+    public static void prettyPrintApple(List<Apple> inventory, PrintFormatter printFormatter) {
         for (Apple apple : inventory) {
-            String output = printFunction.getOutput(apple);
+            String output = printFormatter.accept(apple);
             System.out.println(output);
         }
     }
 
-    public interface PrintFunction {
-        String getOutput(Apple apple);
+    public interface PrintFormatter {
+        String accept(Apple apple);
     }
 
-    public static class AppleWeightPrintFunction implements PrintFunction {
+    public static class AppleWeightPrintFormatter implements PrintFormatter {
 
         @Override
-        public String getOutput(Apple apple) {
-            return String.valueOf(apple.getWeight());
+        public String accept(Apple apple) {
+            return "An apple of " + apple.getWeight() + "g";
         }
     }
 
-    public static class AppleColorPrintFunction implements PrintFunction {
+    public static class ApplePrintFormatter implements PrintFormatter {
 
         @Override
-        public String getOutput(Apple apple) {
-            return apple.getColor().name();
+        public String accept(Apple apple) {
+            int weight = apple.getWeight();
+            return "The apple is " + apple.getColor().name() + " color"
+                    + System.lineSeparator()
+                    + "The apple weights " + weight + "g and is " + (weight > 150 ? "heavy" : "light");
         }
     }
 
