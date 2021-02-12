@@ -17,7 +17,38 @@ public class FilteringApples {
 
         List<Apple> greenApples = filterApples(inventory, new AppleGreenColorPredicate());
         List<Apple> heavyApples = filterApples(inventory, new AppleHeavyWeightPredicate());
+
+        prettyPrintApple(greenApples, new AppleColorPrintFunction());
+        prettyPrintApple(heavyApples, new AppleWeightPrintFunction());
     }
+
+    public static void prettyPrintApple(List<Apple> inventory, PrintFunction printFunction) {
+        for (Apple apple : inventory) {
+            String output = printFunction.getOutput(apple);
+            System.out.println(output);
+        }
+    }
+
+    public interface PrintFunction {
+        String getOutput(Apple apple);
+    }
+
+    public static class AppleWeightPrintFunction implements PrintFunction {
+
+        @Override
+        public String getOutput(Apple apple) {
+            return String.valueOf(apple.getWeight());
+        }
+    }
+
+    public static class AppleColorPrintFunction implements PrintFunction {
+
+        @Override
+        public String getOutput(Apple apple) {
+            return apple.getColor().name();
+        }
+    }
+
 
     /* 모든 속성으로 필터링 : 아래 방식 비추천 */
     public static List<Apple> filterApples(List<Apple> inventory, Color color, int weight, boolean flag) {
