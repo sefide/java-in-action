@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
-public class Result {
+public class UtilityDefaultMethod {
     public static void main(String[] args) {
         List<Apple> inventory = Arrays.asList(
                 new Apple(80, "green", "america"),
