@@ -130,3 +130,50 @@ ex) Predicate\<T>의 경우 함수 시트크립터는 "**T -> boolean**" 이다.
 1. 정적 메서드 참조
 2. 다양한 형식의 인스턴스 메서드 참조
 3. 기존 객체의 인스턴스 메서드 참조 
+
+
+
+---
+
+### 유용한 함수형 인터페이스의 유틸리티 메서드
+
+**Comparator**
+
+- 역정렬 : reverse()
+
+- 2차 정렬 기준 : thenComparing
+
+  ```java
+  default <U extends Comparable<? super U>> Comparator<T> thenComparing(Function<? super T, ? extends U> keyExtractor) {
+    return thenComparing(comparing(keyExtractor));
+  }
+  ```
+
+**Predicate**
+
+- 결과 반전 : negate
+- 결과에 and 조건 적용 : and
+- 결과에 or 조건 적용 : or
+
+**Function**
+
+- andThen : 주어진 함수를 먼저 적용한 결과를 다른 함수의 입력으로 전달하는 함수 반환
+
+  ```java
+  default <V> Function<T, V> andThen(Function<? super R, ? extends V> after) {
+    Objects.requireNonNull(after);
+    return (T t) -> after.apply(apply(t));
+  }
+  ```
+
+- compose : 인수로 주어진 함수를 먼저 실행한 다음에 그 결과를 외부 함수의 인수로 제공
+
+  ```java
+  default <V> Function<V, R> compose(Function<? super V, ? extends T> before) {
+    Objects.requireNonNull(before);
+    return (V v) -> apply(before.apply(v));
+  }
+  ```
+
+  
+
