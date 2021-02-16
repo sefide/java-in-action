@@ -15,7 +15,9 @@ public class Result {
         );
 
         // sort(Comparator<? super E> c)
-        inventory.sort(Comparator.comparing(Apple::getWeight));
+        inventory.sort(Comparator.comparing(Apple::getWeight)
+                .reversed()
+                .thenComparing(Apple::getCountry));
 
         System.out.println(inventory);
     }
