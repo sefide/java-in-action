@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class StreamTest {
+
     public static void main(String[] args) {
         List<Dish> specialMenu = Arrays.asList(
                 new Dish("seasonal fruit", true, 120, Dish.Type.OTHER),
@@ -38,11 +39,9 @@ public class StreamTest {
 
         // Quiz5
         List<Dish> meatMenu = specialMenu.stream()
-                .filter(menu -> menu.isMeat())
+                .filter(Dish::isMeat)
                 .limit(2)
                 .collect(Collectors.toList());
-
-        System.out.println(meatMenu);
 
     }
 
