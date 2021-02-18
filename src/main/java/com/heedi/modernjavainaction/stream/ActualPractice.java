@@ -1,4 +1,4 @@
-package com.heedi.modernjavainaction.Stream;
+package com.heedi.modernjavainaction.stream;
 
 import java.util.Arrays;
 import java.util.Comparator;

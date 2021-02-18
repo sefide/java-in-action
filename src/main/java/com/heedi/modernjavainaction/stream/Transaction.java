@@ -1,4 +1,4 @@
-package com.heedi.modernjavainaction.Stream;
+package com.heedi.modernjavainaction.stream;
 
 public class Transaction {
     private final Trader trader;

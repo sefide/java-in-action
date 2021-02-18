@@ -1,10 +1,10 @@
-package com.heedi.modernjavainaction.Stream;
+package com.heedi.modernjavainaction.stream;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class StreamMapping {
+public class Mapping {
 
     public static void main(String[] args) {
         // Quiz5-2 - 1
