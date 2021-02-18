@@ -7,13 +7,13 @@ import java.util.stream.Collectors;
 public class StreamMapping {
 
     public static void main(String[] args) {
-        // Quiz6 - 1
+        // Quiz5-2 - 1
         List<Integer> target = Arrays.asList(1, 2, 3, 4, 5);
         List<Integer> squaredTarget = target.stream()
                 .map(a -> a * a)
                 .collect(Collectors.toList());
 
-        // Quiz6 - 2
+        // Quiz5-2 - 2
         List<Integer> pair1 = Arrays.asList(1, 2, 3);
         List<Integer> pair2 = Arrays.asList(3, 4);
 
@@ -22,7 +22,7 @@ public class StreamMapping {
                         .map(b -> new int[]{a, b}))
                 .collect(Collectors.toList());
 
-        // Quiz6 - 3
+        // Quiz5-2 - 3
         List<int[]> threePair = pair1.stream()
                 .flatMap(a -> pair2.stream()
                         .filter(b -> (a + b) % 3 == 0)
