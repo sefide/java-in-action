@@ -1,0 +1,5 @@
+Test text
+Today’s Friday.. 
+I’m studying with Modern Java In Action.
+I just started studying to improve my development skills, but now it’s fun..
+Java is difficulty.
