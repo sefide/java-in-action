@@ -115,11 +115,61 @@ combiner : 병렬처리된 결과를 합치는데 사용할 연산
 ### 스트림 연산의 상태
 
 **상태 없음**
-
 (map, filter) : 요소를 받아 결과를 출력 스트림으로 내보내며 내부 상태를 갖지 않는다. (사용자가 제공한 람다나 메서드 참조가 내부적인 가변 상태를 갖지 않는다는 가정)
 
 **상태 있음** 
-
 (reduce, sum, max) : 연산 결과를 누적할 내부 상태가 필요한 경우, 한정된 크기의 내부 상태를 보유
-
 (sorted, distinct) : 모든 요소가 버퍼에 추가되어 있음, 이 때는 저장소 크기가 정해져있지 않지만 무한으로 커지면 문제가 발생할 수 있다.
+
+
+
+---
+
+### 숫자형 스트림
+
+스트림 API의 숫자 스트림을 효율적으로 처리할 수 있도록 제공해주는 기본형 특화 스트림 (primitive stream specialization)
+
+#### 기본형 특화 스트림
+
+박싱, 언박싱 과정에서 일어나는 효율성을 높이기 위해 ... IntStream, DoubleStream, LongStream
+
+- 숫자 스트림으로 매핑 : mapToInt, mapToDouble, mapToLong
+- 객체 스트림으로 복원 : boxed()
+
+```java
+Stream<Integer> boxed();
+Stream<Double> boxed();
+Stream<Long> boxed();
+```
+
+- OptionalInt, OptionalDouble, OptionalLong
+
+#### 숫자 범위
+
+- **range**
+
+  ```java
+  public static IntStream range(int startInclusive, int endExclusive) {
+    if (startInclusive >= endExclusive) {
+      return empty();
+    } else {
+      return StreamSupport.intStream(
+        new Streams.RangeIntSpliterator(startInclusive, endExclusive, false), false);
+    }
+  }
+  ```
+
+  
+
+- **rangeClosed**
+
+  ```java
+  public static IntStream rangeClosed(int startInclusive, int endInclusive) {
+    if (startInclusive > endInclusive) {
+      return empty();
+    } else {
+      return StreamSupport.intStream(
+        new Streams.RangeIntSpliterator(startInclusive, endInclusive, true), false);
+    }
+  }
+  ```
