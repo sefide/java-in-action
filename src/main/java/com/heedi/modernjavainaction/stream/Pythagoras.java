@@ -1,21 +1,22 @@
 package com.heedi.modernjavainaction.stream;
 
+import java.util.Arrays;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class Pythagoras {
 
     public static void main(String[] args) {
-        int[] numbers = new int[]{3, 4, 5};
-        int a = 3;
 
-        double c = IntStream.range(1, 100)
-                .filter(i -> Math.sqrt((a * a) + (i * i)) % 1 == 0)
-                .peek(b -> System.out.println("b is " + b))
+        Stream<int[]> numbers = IntStream.rangeClosed(1, 100)
                 .boxed()
-                .map(b -> Math.sqrt((a * a) + (b * b)))
-                .findFirst()
-                .orElse(0d);
+                .flatMap(a -> IntStream.rangeClosed(a, 100) // Stream<Integer>
+                        .filter(b -> Math.sqrt((a * a) + (b * b)) % 1 == 0)
+                        .mapToObj(b -> new int[]{a, b, (int) Math.sqrt((a * a) + (b * b))}) // Stream<int[]>
+                );
 
-        System.out.println(c);
+        numbers
+                .limit(5)
+                .forEach(numberSet -> System.out.println(Arrays.toString(numberSet)));
     }
 }
