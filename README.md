@@ -9,31 +9,36 @@ Studying with <Modern Java In Action>
 
 ---
 ## PART 1 기초
-### Chapter1 자바 8,9,10,11 : 무슨 일이 일어났는가
+### Chapter1. 자바 8,9,10,11 : 무슨 일이 일어났는가
 
 [자바 8,9,10,11의 변화](src/main/java/com/heedi/modernjavainaction/chapter01/chapter01.md)
 
-### 동작 파라미터화 코드 전달하기
+### Chapter2. 동작 파라미터화 코드 전달하기
 
 [동작 파라미터화](src/main/java/com/heedi/modernjavainaction/behaviorParameterization/chapter02.md)
 
-### 람다 표현식
+### Chapter3. 람다 표현식
 
 [람다 표현식](src/main/java/com/heedi/modernjavainaction/lambda/chapter03.md)
-- [람다](src/main/java/com/heedi/modernjavainaction/lambda/Lambda.java)
-- [클로저](src/main/java/com/heedi/modernjavainaction/lambda/Closure.java)
-- [메서드 참조](src/main/java/com/heedi/modernjavainaction/lambda/MethodReference.java)
-- [유용한 메서드](src/main/java/com/heedi/modernjavainaction/lambda/UtilityDefaultMethod.java)
-  - Comparator
-  - Predicate
-  - Function 
+
 
 ## PART 2 함수형 데이터 처리
-### 스트림 소개
+### Chapter4. 스트림 소개
 
-[스트림](src/main/java/com/heedi/modernjavainaction/behaviorParameterization/chapter02.md)
+[스트림](src/main/java/com/heedi/modernjavainaction/stream/chapter04.md)
 
 
-### 스트림 활용
+### Chapter5. 스트림 활용
 
-[스트림](src/main/java/com/heedi/modernjavainaction/behaviorParameterization/chapter02.md)
+[스트림 활용](src/main/java/com/heedi/modernjavainaction/stream/chapter05.md)
+
+
+### Chapter6. 스트림으로 데이터 수집
+
+[컬렉터 및 그루핑과 분할](src/main/java/com/heedi/modernjavainaction/stream/chapter06.md)
+
+
+### Chapter7. 병렬 데이터 처리와 성능
+
+[스트림 병렬 처리](src/main/java/com/heedi/modernjavainaction/stream/chapter07.md)
+
