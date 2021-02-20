@@ -125,7 +125,7 @@ ex) Predicate\<T>의 경우 함수 시트크립터는 "**T -> boolean**" 이다.
 => *인스턴스 변수는 힙에 저장, 지역변수는 스택에 저장. 스택에 저장된 지역변수를 접근하게 되면 스레드 종료 후, 변수 할당이 해제되었는데도 람다 스레드에서는 접근하려 할 수 있다. 따라서 자바에서는 원래 변수 복사본을 제공한다. 복사본의 값이 바뀌지 않아야 하므로 한번만 값을 할당할 수 있도록 제약을 둔다.* 
 
 
-[코드로 확인하기](src/main/java/com/heedi/modernjavainaction/lambda/Lambda.java)
+[코드로 확인하기](Lambda.java)
 
 <br/>
 
@@ -137,7 +137,7 @@ ex) Predicate\<T>의 경우 함수 시트크립터는 "**T -> boolean**" 이다.
 
 람다와의 차이점 : 클로저는 외부 변수를 참조, 람다는 자신이 받는 매개변수만을 참조
 
-[코드로 확인하기](src/main/java/com/heedi/modernjavainaction/lambda/Closure.java)
+[코드로 확인하기](Closure.java)
 
 참고) 
 - https://futurecreator.github.io/2018/08/09/java-lambda-and-closure/
@@ -155,7 +155,7 @@ ex) Predicate\<T>의 경우 함수 시트크립터는 "**T -> boolean**" 이다.
 2. 다양한 형식의 인스턴스 메서드 참조
 3. 기존 객체의 인스턴스 메서드 참조 
 
-[코드로 확인하기](src/main/java/com/heedi/modernjavainaction/lambda/MethodReference.java)
+[코드로 확인하기](MethodReference.java)
 
 <br/>
 
@@ -202,5 +202,5 @@ ex) Predicate\<T>의 경우 함수 시트크립터는 "**T -> boolean**" 이다.
   }
   ```
   
-[코드로 확인하기](src/main/java/com/heedi/modernjavainaction/lambda/UtilityDefaultMethod.java)
+[코드로 확인하기](UtilityDefaultMethod.java)
 
