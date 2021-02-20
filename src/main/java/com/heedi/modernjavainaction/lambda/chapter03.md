@@ -164,7 +164,7 @@ ex) Predicate\<T>의 경우 함수 시트크립터는 "**T -> boolean**" 이다.
 ### 유용한 함수형 인터페이스의 유틸리티 메서드
 
 
-**Comparator**
+**[ Comparator ]**
 
 - 역정렬 : reverse()
 
@@ -176,13 +176,13 @@ ex) Predicate\<T>의 경우 함수 시트크립터는 "**T -> boolean**" 이다.
   }
   ```
 
-**Predicate**
+**[ Predicate ]**
 
 - 결과 반전 : negate
 - 결과에 and 조건 적용 : and
 - 결과에 or 조건 적용 : or
 
-**Function**
+**[ Function ]**
 
 - andThen : 주어진 함수를 먼저 적용한 결과를 다른 함수의 입력으로 전달하는 함수 반환
 
