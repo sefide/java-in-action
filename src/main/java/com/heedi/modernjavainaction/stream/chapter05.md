@@ -23,7 +23,7 @@ Stream<T> filter(Predicate<? super T> predicate);
 
 - **distinct**: 고유 요소 스트림 반환
 
-[코드로 확인하기](src/main/java/com/heedi/modernjavainaction/stream/Filtering.java)
+[코드로 확인하기](Filtering.java)
 
 <br>
 
@@ -43,6 +43,7 @@ default Stream<T> takeWhile(Predicate<? super T> predicate) {
     ,isParallel()).onClose(this::close);    
 }
 ```
+<br>
 
 - **dropWhile** : 조건에 부합하지 않는 스트림을 반환한다. takeWhile과 정반대로 Predicate가 거짓이 되는 지점까지 발견된 요소를 버리는 방식이다.
 
@@ -56,8 +57,10 @@ default Stream<T> dropWhile(Predicate<? super T> predicate) {
     ,isParallel()).onClose(this::close);   
 }
 ```
+<br>
 
 - **limit** : 최대 n개의 요소를 반환한다. (쇼트서킷 적용)
+<br>
 - **skip** : 처음 n개의 요소를 제외한 스트림을 반환한다. 요소의 개수가 n개 이하라면 빈 스트림을 반환.
 
 <br>
@@ -78,7 +81,7 @@ default Stream<T> dropWhile(Predicate<? super T> predicate) {
 <R> Stream<R> flatMap(Function<? super T, ? extends Stream<? extends R>> mapper);
 ```
 
-[코드로 확인하기](src/main/java/com/heedi/modernjavainaction/stream/Mapping.java)
+[코드로 확인하기](Mapping.java)
 
 <br>
 
@@ -96,7 +99,7 @@ default Stream<T> dropWhile(Predicate<? super T> predicate) {
 
 => 위 연산들은 *쇼트서킷*이 적용된다. 스트림의 모든 요소들을 처리하지 않고도 결과를 반환할 수 있는 것이다. 
 
-
+<br>
 
 [^Optional<T>]: 값의 존재나 부재 여부를 표현하는 컨테이너 클래스 (chapter10 참고)
 
@@ -127,7 +130,7 @@ accumulator : 추상화된 반복 패턴 (연산)
 
 combiner : 병렬처리된 결과를 합치는데 사용할 연산
 
-[코드로 확인하기](src/main/java/com/heedi/modernjavainaction/stream/Reducing.java)
+[코드로 확인하기](Reducing.java)
 
 <br>
 
@@ -147,7 +150,7 @@ combiner : 병렬처리된 결과를 합치는데 사용할 연산
 ---
 
 ### 실전 연습
-[코드로 확인하기](src/main/java/com/heedi/modernjavainaction/stream/ActualPractice.java)
+[코드로 확인하기](ActualPractice.java)
 
 <br>
 
@@ -205,7 +208,7 @@ Stream<Long> boxed();
   }
   ```
 
-[코드로 확인하기](src/main/java/com/heedi/modernjavainaction/stream/NumberRange.java)
+[코드로 확인하기](NumberRange.java)
 
 <br>
 
@@ -216,19 +219,19 @@ Stream<Long> boxed();
 
 **피보나치 수열**
 
-[코드로 확인하기](src/main/java/com/heedi/modernjavainaction/stream/Fibonacci.java)
+[코드로 확인하기](Fibonacci.java)
 
 
 **피타고라스의 정리**
 
-[코드로 확인하기](src/main/java/com/heedi/modernjavainaction/stream/Pythagoras.java)
+[코드로 확인하기](Pythagoras.java)
 
 
 **무한 스트림**
 
-[코드로 확인하기](src/main/java/com/heedi/modernjavainaction/stream/InfiniteStream.java)
+[코드로 확인하기](InfiniteStream.java)
 
 
 **파일 스트림** 
 
-[코드로 확인하기](src/main/java/com/heedi/modernjavainaction/stream/FileStream.java)
+[코드로 확인하기](FileStream.java)
