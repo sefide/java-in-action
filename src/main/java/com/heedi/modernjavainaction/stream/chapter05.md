@@ -10,7 +10,7 @@ Stream<T> filter(Predicate<? super T> predicate);
 
 - **distinct**: 고유 요소 스트림 반환
 
-
+[코드로 확인하기](src/main/java/com/heedi/modernjavainaction/stream/Filtering.java)
 
 ---
 
@@ -63,6 +63,7 @@ default Stream<T> dropWhile(Predicate<? super T> predicate) {
 <R> Stream<R> flatMap(Function<? super T, ? extends Stream<? extends R>> mapper);
 ```
 
+[코드로 확인하기](src/main/java/com/heedi/modernjavainaction/stream/Mapping.java)
 
 
 ---
@@ -110,6 +111,9 @@ accumulator : 추상화된 반복 패턴 (연산)
 
 combiner : 병렬처리된 결과를 합치는데 사용할 연산
 
+[코드로 확인하기](src/main/java/com/heedi/modernjavainaction/stream/Reducing.java)
+
+
 ---
 
 ### 스트림 연산의 상태
@@ -122,6 +126,10 @@ combiner : 병렬처리된 결과를 합치는데 사용할 연산
 (sorted, distinct) : 모든 요소가 버퍼에 추가되어 있음, 이 때는 저장소 크기가 정해져있지 않지만 무한으로 커지면 문제가 발생할 수 있다.
 
 
+---
+
+### 실전 연습
+[코드로 확인하기](src/main/java/com/heedi/modernjavainaction/stream/ActualPractice.java)
 
 ---
 
@@ -143,6 +151,9 @@ Stream<Long> boxed();
 ```
 
 - OptionalInt, OptionalDouble, OptionalLong
+
+
+
 
 #### 숫자 범위
 
@@ -173,3 +184,27 @@ Stream<Long> boxed();
     }
   }
   ```
+
+[코드로 확인하기](src/main/java/com/heedi/modernjavainaction/stream/NumberRange.java)
+
+
+---
+
+피보나치 수열
+
+[코드로 확인하기](src/main/java/com/heedi/modernjavainaction/stream/Fibonacci.java)
+
+
+피타고라스의 정리
+
+[코드로 확인하기](src/main/java/com/heedi/modernjavainaction/stream/Pythagoras.java)
+
+
+무한 스트림
+
+[코드로 확인하기](src/main/java/com/heedi/modernjavainaction/stream/InfiniteStream.java)
+
+
+파일 스트림 
+
+[코드로 확인하기](src/main/java/com/heedi/modernjavainaction/stream/FileStream.java)
