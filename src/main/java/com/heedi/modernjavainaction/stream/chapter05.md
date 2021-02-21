@@ -1,3 +1,16 @@
+[1. 필터링](#필터링) <br>
+[2. 스트림 슬라이싱](#스트림-슬라이싱) <br>
+[3. 매핑](#매핑) <br>
+[4. 검색과 매칭](#검색과-매칭) <br>
+[5. 리듀싱](#리듀싱) <br>
+[6. 스트림 연산의 상태](#스트림-연산의-상태) <br>
+[7. 필터링](#실전-연습) <br>
+[8. 숫자형 스트림](#숫자형-스트림) <br>
+[9. 그 외](#그-외) <br>
+
+<br>
+
+
 ## 스트림 활용 
 
 ### 필터링
@@ -11,6 +24,8 @@ Stream<T> filter(Predicate<? super T> predicate);
 - **distinct**: 고유 요소 스트림 반환
 
 [코드로 확인하기](src/main/java/com/heedi/modernjavainaction/stream/Filtering.java)
+
+<br>
 
 ---
 
@@ -45,7 +60,7 @@ default Stream<T> dropWhile(Predicate<? super T> predicate) {
 - **limit** : 최대 n개의 요소를 반환한다. (쇼트서킷 적용)
 - **skip** : 처음 n개의 요소를 제외한 스트림을 반환한다. 요소의 개수가 n개 이하라면 빈 스트림을 반환.
 
-
+<br>
 
 ---
 
@@ -65,6 +80,7 @@ default Stream<T> dropWhile(Predicate<? super T> predicate) {
 
 [코드로 확인하기](src/main/java/com/heedi/modernjavainaction/stream/Mapping.java)
 
+<br>
 
 ---
 
@@ -84,7 +100,7 @@ default Stream<T> dropWhile(Predicate<? super T> predicate) {
 
 [^Optional<T>]: 값의 존재나 부재 여부를 표현하는 컨테이너 클래스 (chapter10 참고)
 
-
+<br>
 
 ---
 
@@ -113,6 +129,7 @@ combiner : 병렬처리된 결과를 합치는데 사용할 연산
 
 [코드로 확인하기](src/main/java/com/heedi/modernjavainaction/stream/Reducing.java)
 
+<br>
 
 ---
 
@@ -125,11 +142,14 @@ combiner : 병렬처리된 결과를 합치는데 사용할 연산
 (reduce, sum, max) : 연산 결과를 누적할 내부 상태가 필요한 경우, 한정된 크기의 내부 상태를 보유
 (sorted, distinct) : 모든 요소가 버퍼에 추가되어 있음, 이 때는 저장소 크기가 정해져있지 않지만 무한으로 커지면 문제가 발생할 수 있다.
 
+<br>
 
 ---
 
 ### 실전 연습
 [코드로 확인하기](src/main/java/com/heedi/modernjavainaction/stream/ActualPractice.java)
+
+<br>
 
 ---
 
@@ -152,7 +172,7 @@ Stream<Long> boxed();
 
 - OptionalInt, OptionalDouble, OptionalLong
 
-
+<br>
 
 
 #### 숫자 범위
@@ -187,24 +207,28 @@ Stream<Long> boxed();
 
 [코드로 확인하기](src/main/java/com/heedi/modernjavainaction/stream/NumberRange.java)
 
+<br>
 
 ---
 
-피보나치 수열
+### 그 외
+
+
+**피보나치 수열**
 
 [코드로 확인하기](src/main/java/com/heedi/modernjavainaction/stream/Fibonacci.java)
 
 
-피타고라스의 정리
+**피타고라스의 정리**
 
 [코드로 확인하기](src/main/java/com/heedi/modernjavainaction/stream/Pythagoras.java)
 
 
-무한 스트림
+**무한 스트림**
 
 [코드로 확인하기](src/main/java/com/heedi/modernjavainaction/stream/InfiniteStream.java)
 
 
-파일 스트림 
+**파일 스트림** 
 
 [코드로 확인하기](src/main/java/com/heedi/modernjavainaction/stream/FileStream.java)
