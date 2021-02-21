@@ -61,7 +61,9 @@ default Stream<T> dropWhile(Predicate<? super T> predicate) {
 
 - **limit** : 최대 n개의 요소를 반환한다. (쇼트서킷 적용)
 <br>
+
 - **skip** : 처음 n개의 요소를 제외한 스트림을 반환한다. 요소의 개수가 n개 이하라면 빈 스트림을 반환.
+
 
 <br>
 
