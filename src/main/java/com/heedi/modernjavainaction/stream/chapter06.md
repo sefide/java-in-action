@@ -18,13 +18,12 @@ collect는 내부적으로 스트림의 요소에 리듀싱 연산을 수행한�
 
 - counting
 
-```
+```java
 long count = menu.stream().collect(Collectors.counting());
 
-아래와 같다
+// 아래와 같다
 long count = menu.stream().count();
 ```
-
 
 
 - 최댓값과 최솟값
@@ -35,5 +34,6 @@ long count = menu.stream().count();
 
 - 요약 연산
 
+[코드로 확인하기](CollectReducing.java)
 
 
