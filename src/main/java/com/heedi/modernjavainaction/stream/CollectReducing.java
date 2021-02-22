@@ -1,34 +1,23 @@
 package com.heedi.modernjavainaction.stream;
 
-import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
-import static java.util.stream.Collectors.maxBy;
-import static java.util.stream.Collectors.minBy;
+import static java.util.stream.Collectors.reducing;
 
 public class CollectReducing {
 
     public static void main(String[] args) {
         List<Dish> menu = Dish.MENU_SAMPLE;
 
-        Comparator<Dish> dishCaloriesComparator = Comparator.comparingInt(Dish::getCalories);
+        int sum = menu.stream()
+                .collect(reducing(0, Dish::getCalories, Integer::sum));
 
-        Optional<Dish> mostCalorieDish = menu.stream()
-                .collect(maxBy(dishCaloriesComparator));
+        Optional<Integer> sum2 = menu.stream()
+                .map(Dish::getCalories)
+                .reduce(Integer::sum);
 
-        Optional<Dish> mostCalorieDish2 = menu.stream()
-                .max(dishCaloriesComparator);
-
-        Optional<Dish> leastCalorieDish = menu.stream()
-                .collect(minBy(dishCaloriesComparator));
-
-        Optional<Dish> leastCalorieDish2 = menu.stream()
-                .min(dishCaloriesComparator);
-
-        System.out.println(mostCalorieDish);
-        System.out.println(mostCalorieDish2);
-        System.out.println(leastCalorieDish);
-        System.out.println(leastCalorieDish2);
+        System.out.println(sum);
+        System.out.println(sum2);
     }
 }
