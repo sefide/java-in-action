@@ -39,7 +39,7 @@ maxBy나 minBy 모두 내부적으로 reducing 연산으로 이뤄진다는 것�
 }
 ```
 
-[코드로 확인하기](CollectReducing.java)
+[코드로 확인하기](CollectMinMax.java)
 
 <br>
 
@@ -61,6 +61,7 @@ maxBy나 minBy 모두 내부적으로 reducing 연산으로 이뤄진다는 것�
 
 Collectors.joining
 
+[코드로 확인하기](CollectJoining.java)
 
 <br>
 
@@ -75,6 +76,8 @@ public static <T> Collector<T, ?, Optional<T>> reducing(BinaryOperator<T> op)
   
 public static <T, U> Collector<T, ?, U> reducing(U identity, Function<? super T, ? extends U> mapper, BinaryOperator<U> op) 
 ```
+
+[코드로 확인하기](CollectReducing.java)
 
 <br>
 

@@ -7,7 +7,7 @@ import java.util.Optional;
 import static java.util.stream.Collectors.maxBy;
 import static java.util.stream.Collectors.minBy;
 
-public class CollectMInMax {
+public class CollectMinMax {
 
     public static void main(String[] args) {
         List<Dish> menu = Dish.MENU_SAMPLE;

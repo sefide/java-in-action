@@ -23,6 +23,10 @@ public class Dish {
         this.type = type;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public int getCalories() {
         return calories;
     }
