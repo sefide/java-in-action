@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static java.util.stream.Collectors.maxBy;
+import static java.util.stream.Collectors.minBy;
 
 public class CollectReducing {
 
@@ -19,6 +20,15 @@ public class CollectReducing {
         Optional<Dish> mostCalorieDish2 = menu.stream()
                 .max(dishCaloriesComparator);
 
+        Optional<Dish> leastCalorieDish = menu.stream()
+                .collect(minBy(dishCaloriesComparator));
+
+        Optional<Dish> leastCalorieDish2 = menu.stream()
+                .min(dishCaloriesComparator);
+
         System.out.println(mostCalorieDish);
+        System.out.println(mostCalorieDish2);
+        System.out.println(leastCalorieDish);
+        System.out.println(leastCalorieDish2);
     }
 }
