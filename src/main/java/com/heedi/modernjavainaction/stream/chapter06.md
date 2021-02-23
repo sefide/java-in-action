@@ -84,6 +84,7 @@ public static <T, U> Collector<T, ?, U> reducing(U identity, Function<? super T,
 #### collect vs reduce
 
 **collect**  
+
 => 도출하려는 결과를 누적하는 컨테이너를 바꾸도록 설계됨 <br>
 => 병렬성 확보 가능
 
