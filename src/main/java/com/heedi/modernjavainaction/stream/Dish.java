@@ -59,6 +59,10 @@ public class Dish {
         return type.equals(Type.MEAT);
     }
 
+    public boolean isVegetarian() {
+        return type.equals(Type.OTHER);
+    }
+
     @Override
     public String toString() {
         return "Dish{" +
