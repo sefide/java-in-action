@@ -28,6 +28,7 @@ public class PrimeNumbersCollector implements Collector<Integer, Map<Boolean, Li
 
     @Override
     public BinaryOperator<Map<Boolean, List<Integer>>> combiner() {
+        // 병렬 사용이 불가능하다면, UnsupportedOperationException을 던져도 좋다.
         return (map1, map2) -> {
             map1.get(TRUE).addAll(map2.get(TRUE));
             map1.get(FALSE).addAll(map2.get(FALSE));
