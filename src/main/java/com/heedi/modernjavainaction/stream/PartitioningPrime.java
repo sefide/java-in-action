@@ -18,7 +18,7 @@ public class PartitioningPrime {
         System.out.println(partitionPrimesWithCustomCollector);
     }
 
-    private static Map<Boolean, List<Integer>> partitionPrimes(int n) {
+    public static Map<Boolean, List<Integer>> partitionPrimes(int n) {
         return IntStream.rangeClosed(2, n)
                 .boxed()
                 .collect(partitioningBy(PartitioningPrime::isPrime));

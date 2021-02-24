@@ -15,7 +15,10 @@ import static java.util.stream.Collector.Characteristics.IDENTITY_FINISH;
 public class PrimeNumbersCollector implements Collector<Integer, Map<Boolean, List<Integer>>, Map<Boolean, List<Integer>>> {
     @Override
     public Supplier<Map<Boolean, List<Integer>>> supplier() {
-        return HashMap::new;
+        return () -> new HashMap<Boolean, List<Integer>>() {{
+            put(true, new ArrayList<Integer>());
+            put(false, new ArrayList<Integer>());
+        }};
     }
 
     @Override
