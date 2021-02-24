@@ -1,3 +1,10 @@
+[1. 리듀싱과 요약](#리듀싱과-요약) <br>
+[2. 그룹화](#그룹화) <br>
+[3. 분할](#분할) <br>
+[4. Collector 인터페이스](#Collector-인터페이스) <br>
+
+<br>
+
 ## 스트림 데이터 수집
 
 최종 연산 중 collect에 대해 좀 더 자세히 살펴본다. 
@@ -178,3 +185,78 @@ public static <T, U, A, R>
 [코드로 확인하기](Partitioning.java)
 
 <br>
+
+
+
+---
+
+- Collectors 클래스 (java.util.stream)<br>=> 내부에 Collector 인터페이스를 구현한 CollectorImpl 구현체를 지니고 있음 
+
+- Collector 인터페이스 (java.util.stream)
+
+
+
+### Collector 인터페이스
+
+리듀싱 연산을 어떻게 구현할 지 제공하는 메서드 집합
+
+```
+public interface Collector<T, A, R> {
+	Supplier<A> supplier();
+	BiConsumer<A, T> accumulator();
+	Function<A, R> finisher();
+	BinaryOperation<A> combiner();
+	Set<Charcteristics> characteristics();
+}
+```
+
+**T** : 수집될 스트림 항목의 제네릭 형식
+
+**A** : 누적자, 수집 과정에서 중간 결과를 누적하는 객체 형식
+
+**R** : 수집 연산 결과 객체의 형식
+
+상위 4개의 메서드들은 collect 메서드에서 실행하는 함수이며, characteristics 메서드는 collect 메서드가 어떤 최적화를 이용해서 리듀싱 연산을 수행할 것인지 결정하도록 돕는 힌트 특성 집합을 제공한다. 
+
+<br>
+
+- **supplier** <br>
+  => 빈 결과로 이루어진 Supplier를 반환 <br>
+- **accumulator**  <br>=> 리듀싱 연산을 수행하는 함수를 반환 <br>
+  => 함수의 반환값은 void로 누적자 내부 상태가 바뀐다. <br>
+- **finisher**  <br>
+  => 스트림 탐색을 끝내고 누적자 객체를 최종 결과로 변환하면서 누적 과정을 끝낼 때 호출할 함수 반환 <br>
+  => 누적자 객체가 이미 최종 결과인 경우, 항등 함수를 반환한다. 
+- **combiner** <br>
+  => 리듀싱 연산에서 사용할 함수를 반환 <br>
+  => 반환되는 함수는 스트림의 병렬 처리로 분할된 서브파트 스트림을, 누적자가 이 결과를 어떻게 처리할지 정의 <br>
+- **characteristics** <br>
+  => 컬렉터의 연산을 정의하는 Characteristics 형식의 불변 집합을 반환 <br>
+  => Characteristics에 따라 병렬로 리듀싱할지, 어떤 최적화를 할지 힌트 제공 <br>
+
+[^Characteristics]: Collector의 속성을 나타내는 열거형
+
+```
+UNORDERED : 리듀싱 결과는 스트림 요소의 방문 순서나 누적순서에 영향을 받지 않는다.
+
+CONCURRENT : 다중 스레드에서 accumulator 함수를 동시에 호출할 수 있으며 이 컬렉터는 스트림의 병렬 리듀싱을 수행할 수 있다. 컬렉터의 플래그에 UNORDERED를 함께 설정하지 않았다면, 데이터 소스가 정렬되어 있지 않은 상황에서 병렬 리듀싱 수행이 가능
+
+IDENTITY_FINISH : finisher 메서드가 반환하는 함수는 단순히 identity를 적용하므로 생략할 수 있다.
+```
+
+
+
+테스트로 생성한 ToListCollector 클래스는 IDENTITY_FINISH다. 더불어 리스트의 순서가 상관이 없으니 UNORDERED이기도 하며 CONCURRENT이기도... 
+
+[ToListCollector 구현 - 코드로 확인하기](ToListCollector.java)
+
+[ToListCollector 사용 - 코드로 확인하기](ListCollector.java)
+
+
+
+#### 커스텀 컬렉터 구현해보기
+
+[커스텀 컬렉터로 소수 분할하기 - 코드로 확인하기](PrimeNumbersCollector.java)
+
+새로운 커스텀 컬렉터를 구현하면 collect 메서드에 파라미터를 전달하는 것보다 가독성과 재사용성을 높일 수 있다. 
+
