@@ -193,7 +193,7 @@ if(태스크가 충분히 작거나 더 이상 분할할 수 없으면) {
 [ForkJoinSumCalculator - 구현 코드 확인하기](ForkJoinSumCalculator.java)
 [ForkJoinSumCalculator - 실행 코드 확인하기](ForkJoinSum.java)
 
-![diagram_ForkJoinSumCalculator](./src/main/resources/modernjavainaction/chapter07/diagram_ForkJoinSumCalculator.png)
+![diagram_ForkJoinSumCalculator](../../../../../resources/modernjavainaction/chapter07/diagram_ForkJoinSumCalculator.png)
 
 <br>
 
