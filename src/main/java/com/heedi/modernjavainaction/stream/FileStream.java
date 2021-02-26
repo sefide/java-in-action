@@ -12,7 +12,7 @@ public class FileStream {
 
     public static void main(String[] args) {
         long uniqueWords = 0;
-        Path path = Paths.get("./src/main/java/com/heedi/modernjavainaction/stream/test.txt");
+        Path path = Paths.get("./src/main/resources/modernjavainaction/chapter05/test.txt");
 
         try (Stream<String> lines = Files.lines(path, Charset.defaultCharset())) {
             uniqueWords = lines.flatMap(line -> Arrays.stream(line.split(" ")))

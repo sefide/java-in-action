@@ -100,7 +100,7 @@ java8 > 스트림 API - 필터링, 추출, 그룹화
 
 인터페이스를 업데이트하려면 해당 인터페이스를 구현하는 모든 클래스도 업데이트를 해야했다. => 디폴트 메서드로 해결
 
-![List_Collection](./image/chapter01_Collections_List.png)
+![List_Collection](../../../../../resources/modernjavainaction/chapter01/chapter01_Collections_List.png)
  
 java8 이전에는 List\<T>, Collecition\<T>에서 stream()이나 parallelStream() 메서드를 지원하지 않았다. Collection 인터페이스에 stream 메서드를 추가한다면, ArrayList와 같이 Collection 인터페이스를 구현하는 수많은 클래스에서 해당 메서드를 구현해야 했다. 
 
