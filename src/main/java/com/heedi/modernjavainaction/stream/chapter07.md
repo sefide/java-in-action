@@ -154,8 +154,11 @@ $gradle jmh
 
 8. 최종 연산의 병합 과정이 비싸면 병렬이 효과적으로 상쇄해줄 수 있다. 
 
+<br>
 
 ---
+
+<br>
 
 ## 포크/조인 프레임워크
 
@@ -163,6 +166,8 @@ $gradle jmh
 
 서브태스크를 스레드 풀의 작업자 스레드에 분산 할당하는 ExecutorSevice 인터페이스를 구현한다. 
 
+
+<br>
 
 
 ### RecursiveTask 활용
@@ -190,7 +195,7 @@ if(태스크가 충분히 작거나 더 이상 분할할 수 없으면) {
 
 <br>
 
-[ForkJoinSumCalculator - 구현 코드 확인하기](ForkJoinSumCalculator.java)
+[ForkJoinSumCalculator - 구현 코드 확인하기](ForkJoinSumCalculator.java) <br>
 [ForkJoinSumCalculator - 실행 코드 확인하기](ForkJoinSum.java)
 
 ![diagram_ForkJoinSumCalculator](../../../../../resources/modernjavainaction/chapter07/diagram_ForkJoinSumCalculator.png)
