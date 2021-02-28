@@ -25,11 +25,11 @@ public class ForkJoinSumCalculator extends RecursiveTask<Long> {
             return computeSequentially();
         }
         ForkJoinSumCalculator leftTask = new ForkJoinSumCalculator(numbers, start, start + length / 2);
-        leftTask.fork();
+        leftTask.fork(); // ForkJoinPool의 다른 스레드로 새로운 태스크 실행
 
         ForkJoinSumCalculator rightTask = new ForkJoinSumCalculator(numbers, start + length / 2, end);
-        Long rightResult = rightTask.compute();
-        Long leftResult = leftTask.compute();
+        Long rightResult = rightTask.compute(); // 두 번째 서브태스크 동기 실행
+        Long leftResult = leftTask.join(); // 첫 번째 서브태스크읙 결과를 기다리거나 완료되면 읽는다.
 
         return leftResult + rightResult;
     }
