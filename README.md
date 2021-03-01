@@ -42,3 +42,10 @@ Studying with <Modern Java In Action>
 
 [스트림 병렬 처리](src/main/java/com/heedi/modernjavainaction/stream/chapter07.md)
 
+
+## PART 3 스트림과 람다를 이용한 효과적 프로그래밍 
+### Chapter8. 컬렉션 API 개선
+
+[컬렉션 API 개선](src/main/java/com/heedi/modernjavainaction/collection/chapter08.md)
+
+
