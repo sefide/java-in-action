@@ -2,6 +2,8 @@
 	[1. 스레드 관리](#스레드-관리) <br>	[2. 성능 측정](#성능-측정) <br>	[3. 병렬 스트림 효과적으로 사용하기](#병렬-스트림-효과적으로-사용하기) <br>
 
 2. 포크/조인 프레임워크
+    [1. RecursiveTask 활용](#RecursiveTask-활용) <br>	[2. 포크/조인 프레임워크 제대로 사용하기](#포크-조인-프레임워크-제대로-사용하기) <br>	[3. 작업 훔치기](#작업-훔치기) <br>
+3. [Spliterator](#Spliterator)
 
 
 
@@ -204,7 +206,7 @@ if(태스크가 충분히 작거나 더 이상 분할할 수 없으면) {
 
 
 
-### 포크/조인 프레임워크 제대로 사용하기
+### 포크 조인 프레임워크 제대로 사용하기
 
 1. 두 서브태스크가 모두 시작된 다음에 join을 호출하자. join 메서드를 태스크에 호출하면 태스크가 생산하는 결과가 나올때까지 호출자를 대기시키기 때문에 다른 태스크가 작업을 수행하지 못한다. 
 2. RecursiveTask 내에서는 ForkJoinPool의 invoke 메서드는 사용하지 않을것. compute나 fork는 사용해도 된다. 순차 코드에서 병렬 계산을 시작할 때만 invoke를 사용하도록 한다.
@@ -215,7 +217,8 @@ if(태스크가 충분히 작거나 더 이상 분할할 수 없으면) {
 
 <br>
 
-### 작업 훔치기 (work stealing) 
+### 작업 훔치기
+; Work Stealing
 
 ForkJoinPool의 모든 스레드를 공정하게 분할하는 방법.
 
@@ -224,4 +227,69 @@ ForkJoinPool의 모든 스레드를 공정하게 분할하는 방법.
 
 <br>
 
+
+## Spliterator
+
+분할할 수 있는 반복자 (Splitable Interator) <br>
+; Iterator와 같이 소스의 요소 탐색 기능을 제공하지만 병렬 작업에 특화되어 있다. 
+
+
+
+```java
+public interface Spliterator<T> {
+  boolean tryAdvance(Consumer<? super T> action);
+  Spliterator<T> trySplit();
+  long estimateSize();
+  int characteristics();
+}
+```
+
+**T** : Spliterator에서 탐색하는 요소의 형식
+
+ <br>
+
+- **tryAdvance** <br>
+  => Spliterator의 요소를 하나씩 순차적으로 소비하면서 탐색해야 할 요소가 남아있으면 참을 반환. <br>
+- **trySplit**  <br>=> Spliterator의 일부 요소를 분할해서 두 번째 Spliterator 생성 반환. <br>
+- **estimateSize** <br>
+  => 탐색해야 할 요소의 수 반환. <br>
+- **characteristics**  <br>=> Spliterator 자체의 특성 집합을 포함하는 int를 반환. <br>
+
+
+
+### Spliterator의 특성
+
+| 특정       | 의미                                                         |
+| ---------- | ------------------------------------------------------------ |
+| ORDERED    | 순서가 정해진 데이터 요소에서 Spliterator는 요소를 탐색/분할할 때 순서에 유의해야 한다. |
+| DISTINCT   | x, y 두 요소를 방문할 때, x.equals(y)는 항상 false를 반환한다. |
+| SORTED     | 탐색된 요소는 미리 정의된 정렬 순서를 따른다.                |
+| SIZED      | 크기가 알려진 데이터로 생성된 경우, estimatedSize()는 정확한 값을 반환한다. |
+| NON-NULL   | 탐색하는 모든 요소는 NULL이 아니다.                          |
+| IMMUTABLE  | Spliterator의 모든 요소는 불변이다.                          |
+| CONCURRENT | 동기화 없이 Spliterator의 소스를 여러 스레드에서 동시에 고칠 수 없다. |
+| SUBSIZED   | 분할된 Spliterator는 SIZED 특성을 갖는다.                    |
+
+
+
+병렬 스트림에서는 기본적으로 컬렉션 프레임워크에서 구현된 디폴트 Spliteraotor를 사용한다. 
+
+```java
+// Collection.java
+@Override
+default Spliterator<E> spliterator() {
+  return Spliterators.spliterator(this, 0);
+}
+```
+
+<br>
+
+### Spliterator 구현해보기 
+
+[Spliterator 직접 구현해보기(WordCounterSpliterator)](WordCounterSpliterator.java) <br>[단어 개수 찾기- 코드로 확인하기](WordCount.java) <br>
+
+
+
+**늦은 바인딩 Spliterator** <br>
+: 첫 번째 탐색 시점, 첫 번째 분할 시점, 또는 첫 번째 예상 크기 요청 시점에 요소의 소스를 바인딩한다.
 
