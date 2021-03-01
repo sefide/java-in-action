@@ -10,8 +10,10 @@
 
 ## 컬렉션 팩토리
 
+[코드로 확인하기](CollectionFactory.java)
+<br>
 
-- **Arrays.asList **<br>
+- **Arrays.asList**<br>
 
 => 고정된 크기의 리스트를 생성하기 때문에 요소를 추가하려 하면 UnsupportedOperationException 발생 <br>
 => 값 갱신은 가능 <br>
@@ -34,6 +36,7 @@ public void add(int index, E element) {
 ```
 
 
+<br> 
 
 *since java9*
 
@@ -113,7 +116,6 @@ public void add(int index, E element) {
 
 
 
-[코드로 확인하기](CollectionFactory.java)
 
 <br>
 
