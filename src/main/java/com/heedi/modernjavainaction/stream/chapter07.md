@@ -1,11 +1,11 @@
 1. 병렬 스트림 <br>
 	[1. 스레드 관리](#스레드-관리) <br>	[2. 성능 측정](#성능-측정) <br>	[3. 병렬 스트림 효과적으로 사용하기](#병렬-스트림-효과적으로-사용하기) <br>
 
-2. 포크/조인 프레임워크
-    [1. RecursiveTask 활용](#RecursiveTask-활용) <br>	[2. 포크/조인 프레임워크 제대로 사용하기](#포크-조인-프레임워크-제대로-사용하기) <br>	[3. 작업 훔치기](#작업-훔치기) <br>
+2. 포크/조인 프레임워크 <br>
+   	[1. RecursiveTask 활용](#RecursiveTask-활용) <br>	[2. 포크/조인 프레임워크 제대로 사용하기](#포크-조인-프레임워크-제대로-사용하기) <br>	[3. 작업 훔치기](#작업-훔치기) <br>
 3. [Spliterator](#Spliterator)
 
-
+ <br>
 
 # 병렬 데이터 처리와 성능
 
@@ -227,6 +227,9 @@ ForkJoinPool의 모든 스레드를 공정하게 분할하는 방법.
 
 <br>
 
+---
+
+<br>
 
 ## Spliterator
 
@@ -270,12 +273,12 @@ public interface Spliterator<T> {
 | CONCURRENT | 동기화 없이 Spliterator의 소스를 여러 스레드에서 동시에 고칠 수 없다. |
 | SUBSIZED   | 분할된 Spliterator는 SIZED 특성을 갖는다.                    |
 
-
+<br>
 
 병렬 스트림에서는 기본적으로 컬렉션 프레임워크에서 구현된 디폴트 Spliteraotor를 사용한다. 
 
 ```java
-// Collection.java
+// Collection.java에서
 @Override
 default Spliterator<E> spliterator() {
   return Spliterators.spliterator(this, 0);
