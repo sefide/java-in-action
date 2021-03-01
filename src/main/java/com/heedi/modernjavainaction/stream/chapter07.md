@@ -273,12 +273,12 @@ public interface Spliterator<T> {
 | CONCURRENT | 동기화 없이 Spliterator의 소스를 여러 스레드에서 동시에 고칠 수 없다. |
 | SUBSIZED   | 분할된 Spliterator는 SIZED 특성을 갖는다.                    |
 
-
+<br>
 
 병렬 스트림에서는 기본적으로 컬렉션 프레임워크에서 구현된 디폴트 Spliteraotor를 사용한다. 
 
 ```java
-// Collection.java
+// Collection.java에서
 @Override
 default Spliterator<E> spliterator() {
   return Spliterators.spliterator(this, 0);
