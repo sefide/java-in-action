@@ -1,4 +1,4 @@
-[1. 컬렉션 API 개선](#컬렉션-API-개선) <br>	[1. 컬렉션 팩토리](#컬렉션-팩토리) <br>	[2. 리스트와 집합처리](#리스트와-집합-처리) <br>
+[1. 컬렉션 팩토리](#컬렉션-팩토리) <br>	[2. 리스트와 집합처리](#리스트와-집합-처리) <br>
 
 
 
@@ -28,8 +28,8 @@ public static <T> List<T> asList(T... a) {
 }
 ```
 
+AbstractList.java 발췌
 ```java
-// AbstractList.java
 public void add(int index, E element) {
   throw new UnsupportedOperationException();
 }
@@ -76,13 +76,13 @@ public void add(int index, E element) {
 
 - **Set.of(E e1, E e2 ..)**
 
-  중복 요소가 있는 경우, IllegalArgumentException 발생 
+  => 중복 요소가 있는 경우, IllegalArgumentException 발생 
 
   
 
 - **Map.of(K k1, V v1, K k2, V v2 ..)**
 
-  10개 이하의 키를 가진 맵 생성 시 유용
+  => 10개 이하의 키를 가진 맵 생성 시 유용
 
   
 
