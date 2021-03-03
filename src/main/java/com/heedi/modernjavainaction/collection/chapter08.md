@@ -239,5 +239,69 @@ public void add(int index, E element) {
   ```
 
 
+
+
+
+## ConcurrentHashMap
+
+"동시성 친화버전 HashMap"
+
+내부 자료구조의 특정 부분만 잠궈 동시 추가, 갱신 작업을 허용한다.
+
+
+
+- forEach : 각 (키, 값) 쌍에 주어진 액션을 실행
+- reduce : 모든 (키, 값) 쌍을 제공된 리듀스 함수를 이용해 결과로 합침 
+- search : 널이 아닌 값을 반환할 때까지 각 (키, 값) 쌍에 함수를 적용 
+
+각 연산 모두 키, 값, (키, 값), Map.Entry 인수로 받는 4가지의 연산 형태를 지원한다. 
+
+
+
+**주의사항**) 
+
+1. 연산이 수행될 때 Map 상태를 잠그지 않기 때문에 연산에 제공되는 함수는 계산이 진행되는 동안 변경될 수 있는 (객체 or 값 or 순서)에 의존하면 안된다. 
+2. 병렬성 기준값을 지정해야 한다. 
+   - 맵의 크기 < 기준값 : 순차 연산
+   - 1 == 기준값 : 공통 스레드 풀을 이용해 병렬성 극대화
+   - Long.MAX_VALUE == 기준값 : 한 개의 스레드로 연산 실행
+3. int, long, double과 같은 기본값 특화 연산이 제공된다 (reduceValueToInt..)
+
+
+
+
+
+- mappingCount : 맵의 매핑 개수 반환
+
+  ```java
+  public long mappingCount() {
+    long n = sumCount();
+    return (n < 0L) ? 0L : n; // ignore transient negative values
+  }
+  ```
+
+  size()의 반환 타입은 int다. 따라서 mappingCount 메서드는 매핑의 개수가 int를 넘어서는 상황에 대처할 수 있다.  
+
+  ```java
+  public int size() {
+    long n = sumCount();
+    return ((n < 0L) ? 0 :
+            (n > (long)Integer.MAX_VALUE) ? Integer.MAX_VALUE :
+            (int)n);
+  }
+  ```
+
+  
+
+- keySet : Map에 속한 키를 집합(Set)으로 생성, Map이 변경되면 생성된 집합도 변경된다. 
+
+
+
+- newKeySet : ConcurrentHashMap으로 유지되는 Set 생성
+
+
+
+[코드로 확인하기](ConcurrentHashMapMethod.java)
+
   
 
