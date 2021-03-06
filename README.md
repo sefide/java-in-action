@@ -49,3 +49,21 @@ Studying with <Modern Java In Action>
 [컬렉션 API 개선](src/main/java/com/heedi/modernjavainaction/collection/chapter08.md)
 
 
+### Chapter9. 리팩터링, 테스팅, 디버깅
+
+[리팩터링](src/main/java/com/heedi/modernjavainaction/refactoring/chapter09.md)
+
+
+### Chapter10. 람다를 이용한 도메인 전용 언어
+
+[DSL](src/main/java/com/heedi/modernjavainaction/dsl/chapter10.md)
+
+
+### Chapter11. null 대신 Optional 클래스
+
+[Optional](src/main/java/com/heedi/modernjavainaction/optional/chapter11.md)
+
+
+### Chapter12. 새로운 날짜와 시간 api 
+
+[날짜와 시간](src/main/java/com/heedi/modernjavainaction/dateTime/chapter12.md)
