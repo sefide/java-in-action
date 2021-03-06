@@ -79,3 +79,12 @@
 - ifPresent(Consumer<? super T> consumer) : 값이 존재하면 consumer 실행하고 없으면 아무 일도 일어나지 않음  
 - ifPresentOrElse(Consumer<? super T> action, Runnable emptyAction) : 값이 존재하면 action 실행하고, 없으면 아무 일도 일어나지 않음
 
+
+
+#### 기본형 특화 Optional 
+
+=> OptionalInt, OptionalLong, OptionalDouble
+
+=> 요소가 최대 한 개이므로 스트림처럼 성능 향상을 기대하기는 어렵다. 
+
+=> map, filter, flatMap과 같은 메서드를 지원하지 않는다. 
