@@ -72,11 +72,10 @@
 
 
 - stream (*since java9*) : Optional이 비어있는지 아닌지에 따라 0개 이상의 항목을 포함하는 스트림으로 변환
-
 - get : 값을 읽는다. 값이 없으면 NoSuchElementException 발생 
 - orElse(T other) : 값이 없는 경우 기본값 제공
-- orElseGet(Supplier<? extends T> other) : Optional이 없는 경우에 Supplier 실행 
-- orElseThrow(Supplier<? extends X> exceptionSupplier)
-- ifPresent(Consumer<? super T> consumer)
-- ifPresentOrElse(Consumer<? super T> action, Runnable emptyAction)
+- orElseGet(Supplier<? extends T> other) : 값이 없는 경우에 Supplier 실행 
+- orElseThrow(Supplier<? extends X> exceptionSupplier) : 값이 없는 경우에 Supplier에서 생성한 예외 발생
+- ifPresent(Consumer<? super T> consumer) : 값이 존재하면 consumer 실행하고 없으면 아무 일도 일어나지 않음  
+- ifPresentOrElse(Consumer<? super T> action, Runnable emptyAction) : 값이 존재하면 action 실행하고, 없으면 아무 일도 일어나지 않음
 
