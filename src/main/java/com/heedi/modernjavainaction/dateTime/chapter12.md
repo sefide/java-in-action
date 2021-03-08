@@ -29,6 +29,8 @@ LocalDate, LocalDateTime과 같은 불변 클래스 추가
 **날짜와 시간 관련 API 제공** <br>
 LocalDate, LocalTime, LocalDateTime, Instant, Duration, Period 등의 클래스 포함
 
+[코드로 확인하기](LocalDateTimeMain.java)
+
 
 
 **Temporal** 
@@ -62,6 +64,12 @@ LocalDate, LocalTime, LocalDateTime, Instant, Duration, Period 등의 클래스 
 
 => Unix epoch time(1970년 1월 1일 0시 0분 0초 UTC)를 기준으로 특정 지점까지의 시간을 초로 표현 <br>=> nanoSecond의 정밀도
 
+<br>
+
+#### 시간 비교
+
+[코드로 확인하기](DateTimeDiff.java)
+
 
 
 **Duration**
@@ -76,3 +84,40 @@ LocalDate, LocalTime, LocalDateTime, Instant, Duration, Period 등의 클래스 
 
 
 
+<br>
+
+### 불변 시간 객체 값 변경해보기
+
+기본적으로 앞서 설명한 클래스들은 불변 클래스로 생성되어 있다. 하지만 Temporal 인터페이스의 get 혹은 with 메서드를 이용해 객체의 필드값을 조회/수정할 수 있다. 필드값 수정은 실제 값 변경이 아니라 필드를 갱신한 복사본을 만든다.
+
+```java
+private LocalDateTime with(LocalDate newDate, LocalTime newTime) {
+  if (date == newDate && time == newTime) {
+    return this;
+  }
+  return new LocalDateTime(newDate, newTime);
+}
+```
+
+존재하지 않는 필드를 조회/수정할 경우, UnsupportedTemporalTypeException 발생시킨다. 
+
+[코드로 확인하기](DateTimeChange.java)
+
+
+
+TemporalAdjusters를 이용하면 더 복잡한 날짜 조정이 가능하다. 
+
+```java
+@FunctionalInterface
+public interface TemporalAdjuster {
+  Temporal adjustInto(Temporal temporal);
+}
+```
+
+
+
+커스텀 TemporalAdjuster를 만들수도 있다. 
+
+[Custom TemporalAdjuster 구현해보기](NextWorkingDay.java)
+
+[Custom TemporalAdjuster 사용해보기](CustomTemporalAdjusterMain.java)
