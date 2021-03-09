@@ -126,13 +126,7 @@ TemporalAdjuster를 구현하여 원하는 동작을 수행하는 커스텀 Temp
 
 ### 출력 및 파싱
 
-
-**DateTimeFormatter**
-
-=> java.time.format <br>
-=> thread safe  <br>
-=> 미리 정의된 상수 혹은 문자 패턴을 이용해 날짜나 시간을 특정 형식의 문자열로 변환 <br>
-
+[코드로 확인하기](DateTimeFormatParsing.java)
 
 **DateTimeFormatter**
 
@@ -151,4 +145,15 @@ TemporalAdjuster를 구현하여 원하는 동작을 수행하는 커스텀 Temp
 
 => 표준 시간이 같은 지역을 묶어 시간대에 대한 규칙 집합을 정의 및 처리 <br> 
 => java.util.TimeZone을 대체 
-=> 
+ 
+ 
+=> 지역 ID는 {area}/{city} 로 표현된다. 
+
+``` java
+ZoneId londonZoneId = ZoneId.of("Europe/London");
+```
+
+지역 ID는 IANA TimeZone DataBase를 참조하기 때문에 [https://www.iana.org/time-zones](https://www.iana.org/time-zones)에서 확인할 수 있다. 
+
+[코드로 확인하기](ZoneIdMain.java)
+
