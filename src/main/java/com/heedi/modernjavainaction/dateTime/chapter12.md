@@ -33,15 +33,15 @@ LocalDate, LocalTime, LocalDateTime, Instant, Duration, Period 등의 클래스 
 
 
 
-**Temporal** 
+### Temporal
 
 => 특정 시간을 모델링하는 객체의 값을 어떻게 읽고 조작할지 정의한 인터페이스 <br>
-=> 수많은 시간 객체들이 구현하고 있다. 
+=> 수많은 시간 객체들이 구현하고 있다. <br>
 ![Temporal 구현 객체 목록](../../../../../resources/modernjavainaction/chapter12/implement_Temporal.png)
 
 
 
-**LocalDate, LocalTime**
+### LocalDate, LocalTime
 
 - of : 날짜/시간 값을 이용해 인스턴스 생성
 - parse : 문자열을 이용해 인스턴스 생성
@@ -49,7 +49,7 @@ LocalDate, LocalTime, LocalDateTime, Instant, Duration, Period 등의 클래스 
 
 
 
-**LocalDateTime** 
+### LocalDateTime
 
 => LocalDate와 LocalTime을 갖는 복합 클래스 <br>=> 여러 정적 메서드 패턴을 이용해 인스턴스를 생성할 수 있다. 
 
@@ -60,25 +60,27 @@ LocalDate, LocalTime, LocalDateTime, Instant, Duration, Period 등의 클래스 
 
 
 
-**Instrant**
+### Instrant
 
 => Unix epoch time(1970년 1월 1일 0시 0분 0초 UTC)를 기준으로 특정 지점까지의 시간을 초로 표현 <br>=> nanoSecond의 정밀도
 
+
 <br>
 
-#### 시간 비교
+
+## 시간 비교
 
 [코드로 확인하기](DateTimeDiff.java)
 
 
 
-**Duration**
+### Duration
 
 => 두 시간 객체 사이의 지속시간 duration을 생성
 
 
 
-**Period**
+### Period
 
 => 두 LocalDate의 차이를 생성
 
@@ -86,7 +88,7 @@ LocalDate, LocalTime, LocalDateTime, Instant, Duration, Period 등의 클래스 
 
 <br>
 
-### 불변 시간 객체 값 변경해보기
+## 불변 시간 객체 값 변경해보기
 
 기본적으로 앞서 설명한 클래스들은 불변 클래스로 생성되어 있다. 하지만 Temporal 인터페이스의 get 혹은 with 메서드를 이용해 객체의 필드값을 조회/수정할 수 있다. 필드값 수정은 실제 값 변경이 아니라 필드를 갱신한 복사본을 만든다.
 
@@ -124,24 +126,30 @@ TemporalAdjuster를 구현하여 원하는 동작을 수행하는 커스텀 Temp
 
 <br>
 
-### 출력 및 파싱
+
+## 출력 및 파싱
 
 [코드로 확인하기](DateTimeFormatParsing.java)
 
-**DateTimeFormatter**
+### DateTimeFormatter
 
 => java.time.format <br>
 => thread safe  <br>
 => 미리 정의된 상수 혹은 문자 패턴을 이용해 날짜나 시간을 특정 형식의 문자열로 변환 <br>
 => DateTimeFormatterBuilder를 이용해 대소문자를 구분하는 파싱, 관대한 규칙을 적용하는 파싱, 패딩, 포매터의 선택사항 등을 활용할 수 있다.
 
-**parse**
+### parse
 
 => 문자열을 날짜 객체로 변환 <br>
 => 시점이나 간격을 표현하는 날짜,시간 API에서 제공
 
 
-**ZoneId**
+<br>
+
+
+## 시간대 
+
+### ZoneId
 
 => 표준 시간이 같은 지역을 묶어 시간대에 대한 규칙 집합을 정의 및 처리 <br> 
 => java.util.TimeZone을 대체 
