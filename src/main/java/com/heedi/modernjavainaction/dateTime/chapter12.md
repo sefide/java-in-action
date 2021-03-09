@@ -116,8 +116,39 @@ public interface TemporalAdjuster {
 
 
 
-커스텀 TemporalAdjuster를 만들수도 있다. 
+TemporalAdjuster를 구현하여 원하는 동작을 수행하는 커스텀 TemporalAdjuster를 만들수도 있다. 
 
 [Custom TemporalAdjuster 구현해보기](NextWorkingDay.java)
 
 [Custom TemporalAdjuster 사용해보기](CustomTemporalAdjusterMain.java)
+
+<br>
+
+### 출력 및 파싱
+
+
+**DateTimeFormatter**
+
+=> java.time.format <br>
+=> thread safe  <br>
+=> 미리 정의된 상수 혹은 문자 패턴을 이용해 날짜나 시간을 특정 형식의 문자열로 변환 <br>
+
+
+**DateTimeFormatter**
+
+=> java.time.format <br>
+=> thread safe  <br>
+=> 미리 정의된 상수 혹은 문자 패턴을 이용해 날짜나 시간을 특정 형식의 문자열로 변환 <br>
+=> DateTimeFormatterBuilder를 이용해 대소문자를 구분하는 파싱, 관대한 규칙을 적용하는 파싱, 패딩, 포매터의 선택사항 등을 활용할 수 있다.
+
+**parse**
+
+=> 문자열을 날짜 객체로 변환 <br>
+=> 시점이나 간격을 표현하는 날짜,시간 API에서 제공
+
+
+**ZoneId**
+
+=> 표준 시간이 같은 지역을 묶어 시간대에 대한 규칙 집합을 정의 및 처리 <br> 
+=> java.util.TimeZone을 대체 
+=> 
