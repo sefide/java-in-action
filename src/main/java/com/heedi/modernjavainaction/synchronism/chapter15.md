@@ -9,13 +9,12 @@
 ![동시성과 병렬성](../../../../../resources/modernjavainaction/chapter15/concurrent_parallelism.png)
 
 
-병렬성 < 동시성이 더 필요한 상황
-
+**병렬성 < 동시성이 더 필요한 상황** <br>
 => 스레드 블록이 아닌 코어를 바쁘게 만들어야 하는 상황
 
+<br>
 
-
-병렬성 + 동시성 프로그래밍을 위해 자바는..
+*병렬성 + 동시성 프로그래밍을 위해 자바는..*
 
 *first* .. Runnable, Thread
 
