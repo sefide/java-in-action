@@ -71,7 +71,7 @@ Studying with <Modern Java In Action>
 
 ### Chapter13. 디폴트 메서드
 
-[디폴트 메서드](src/main/java/com/heedi/modernjavainaction/dafaultMethod/chapter13.md)
+[디폴트 메서드](src/main/java/com/heedi/modernjavainaction/defaultMethod/chapter13.md)
 
 
 ### Chapter14. 자바 모듈 시스템 
@@ -82,7 +82,7 @@ Studying with <Modern Java In Action>
 ## PART 4 개선된 자바 동시성
 ### Chapter15. CompletableFuture와 리액티브 프로그래밍 컨셉의 기초
 
-[동시성](src/main/java/com/heedi/modernjavainaction/collection/chapter15.md)
+[동시성](src/main/java/com/heedi/modernjavainaction/synchronism/chapter15.md)
 
 
 ### Chapter16. CompletableFuture: 안정적 비동기 프로그래밍
