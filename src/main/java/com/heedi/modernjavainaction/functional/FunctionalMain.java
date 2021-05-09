@@ -14,7 +14,7 @@ public class FunctionalMain {
         System.out.println(result);
     }
 
-    static List<List<Integer>> subsets(List<Integer> list) {
+    private static List<List<Integer>> subsets(List<Integer> list) {
         if (list.isEmpty()) {
             List<List<Integer>> ans = new ArrayList<>();
             ans.add(Collections.emptyList());
